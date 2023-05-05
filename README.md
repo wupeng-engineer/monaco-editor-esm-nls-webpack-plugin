@@ -16,7 +16,7 @@ The webpack's plugin for monaco editor to compile the worker and handle with loc
 
 ## Installing
 
-`npm install monaco-editor monaco-editor-esm-nls-webpack-plugin --save-dev`
+`npm install monaco-editor --save-dev`
 
 `npm install https://github.com/wupeng-engineer/monaco-editor-esm-nls-webpack-plugin.git`
 
