@@ -1,4 +1,9 @@
-# monaco-editor-esm-webpack-plugin
+# monaco-editor-esm-nls-webpack-plugin
+
+Fork
+> [monaco-editor-esm-webpack-plugin](https://github.com/wang12124468/monaco-editor-esm-webpack-plugin)    
+> [monaco-editor-nls](https://github.com/wang12124468/monaco-editor-nls)
+
 
 [Change log](CHANGELOG.md)
 
@@ -7,20 +12,19 @@
 
 The webpack's plugin for monaco editor to compile the worker and handle with localization.
 
-![](docs/img/1.png)
+<!-- ![](docs/img/1.png) -->
 
 ## Installing
 
-`npm install monaco-editor-esm-webpack-plugin --save-dev`
+`npm install monaco-editor monaco-editor-esm-nls-webpack-plugin --save-dev`
 
-`npm install monaco-editor monaco-editor-webpack-plugin monaco-editor-nls`
 
 ## Using
 
 - `webpack.config.js`
 
-    ```
-    const MonacoWebpackPlugin = require('monaco-editor-esm-webpack-plugin');
+    ```js
+    const MonacoWebpackPlugin = require('monaco-editor-esm-nls-webpack-plugin');
 
     module.exports = {
         entry: './index.js',
@@ -33,8 +37,13 @@ The webpack's plugin for monaco editor to compile the worker and handle with loc
                 {
                     test: /\.js/,
                     enforce: 'pre',
-                    include: /node_modules[\\\/]monaco-editor[\\\/]esm/,
-                    use: MonacoWebpackPlugin.loader
+                    include: [/node_modules[\\\/]monaco-editor[\\\/]esm/, /monaco-editor-esm-nls-webpack-plugin/],
+                    use: [{
+                        loader: MonacoEditorWebpackPlugin.loader,
+                        options: {
+                            locale: 'zh-hans'
+                        }
+                    }]
                 },
                 {
                     test: /\.css$/,
@@ -43,12 +52,14 @@ The webpack's plugin for monaco editor to compile the worker and handle with loc
             ]
         },
         plugins: [
-            new MonacoWebpackPlugin()
+            new MonacoWebpackPlugin({
+                languages: ["typescript", "javascript", "css", "html", "json"],
+            })
         ]
     };
     ```
 
-## Localization
+## ~~Localization~~
 
 - Set the locale data in your code
 

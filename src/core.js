@@ -1,6 +1,6 @@
 const MonacoEditorWebapckPlugin = require('monaco-editor-webpack-plugin');
 const NormalModuleWebpackReplacementPlugin = require("webpack/lib/NormalModuleReplacementPlugin");
-const nls = require.resolve('monaco-editor-nls');
+const nls = require.resolve('monaco-editor-esm-nls-webpack-plugin/vscode-nls.js');
 
 function MonacoEditorEsmWebpackPlugin({ isMonacoEditorWebapckPlugin = true, isReplaceNls = true, ...options } = {}) {
     if(isMonacoEditorWebapckPlugin) {
